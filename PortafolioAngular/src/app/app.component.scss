@@ -1,0 +1,23 @@
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 50px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .main-content {
+    padding-top: 45px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-content {
+    padding-top: 45px;
+  }
+}

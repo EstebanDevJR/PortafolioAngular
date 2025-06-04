@@ -1,0 +1,157 @@
+<section id="projects" class="projects-section">
+  <div class="projects-header">
+    <h2 class="projects-title animate__animated animate__fadeInDown">Featured Projects</h2>
+    <p class="projects-subtitle animate__animated animate__fadeInUp">Innovative solutions built with cutting-edge technology</p>
+  </div>
+
+  <!-- Projects Grid with PrimeNG Cards -->
+  <div class="projects-container">
+    <div class="projects-grid">
+      <div *ngFor="let project of projects; let i = index" 
+           class="project-card-wrapper animate__animated animate__fadeInUp"
+           [style.animation-delay]="(i * 0.2) + 's'">
+        
+        <p-card class="futuristic-project-card">
+          <!-- Card Header -->
+          <ng-template pTemplate="header">
+            <div class="project-header">
+              <div class="project-status">
+                <div class="status-dot"></div>
+                <span class="status-text">{{ project.lastUpdate }}</span>
+              </div>
+              <p-badge [value]="project.complexity || 'N/A'" class="complexity-badge"></p-badge>
+            </div>
+            
+            <!-- Project Image -->
+            <div class="project-image-container" *ngIf="project.image">
+              <img [src]="project.image" [alt]="project.title" class="project-image">
+              <div class="image-overlay">
+                <div class="overlay-content">
+                  <p-button 
+                    icon="pi pi-external-link" 
+                    label="View Project"
+                    [outlined]="true"
+                    class="preview-btn"
+                    (click)="openProject(project.liveUrl)"
+                    pTooltip="Open live demo"
+                    tooltipPosition="top">
+                  </p-button>
+                  <p-button 
+                    icon="pi pi-github" 
+                    [outlined]="true"
+                    class="github-btn"
+                    (click)="openProject(project.sourceUrl)"
+                    pTooltip="View source code"
+                    tooltipPosition="top"
+                    *ngIf="project.sourceUrl">
+                  </p-button>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+
+          <!-- Card Content -->
+          <div class="project-content">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
+            
+            <!-- Tech Stack Tags -->
+            <div class="tech-stack">
+              <p-tag 
+                *ngFor="let tech of getTechStack(project.title)" 
+                [value]="tech" 
+                class="tech-tag">
+              </p-tag>
+            </div>
+            
+            <!-- Project Metrics -->
+            <div class="project-metrics">
+              <div class="metric-item">
+                <span class="metric-label">Accuracy</span>
+                <div class="metric-progress">
+                  <p-progressBar 
+                    [value]="project.accuracy" 
+                    [showValue]="false"
+                    class="accuracy-progress">
+                  </p-progressBar>
+                  <span class="metric-value">{{ project.accuracy }}%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Footer -->
+          <ng-template pTemplate="footer">
+            <div class="project-footer">
+              <div class="commit-info">
+                <span class="commit-hash">#{{ project.commitHash }}</span>
+                <span class="commit-time">{{ project.lastUpdate }}</span>
+              </div>
+              <div class="action-buttons">
+                <p-button 
+                  label="Deploy" 
+                  icon="pi pi-cloud-upload"
+                  [outlined]="true"
+                  size="small"
+                  class="deploy-btn"
+                  (click)="openProject(project.liveUrl)">
+                </p-button>
+                <p-button 
+                  label="Code" 
+                  icon="pi pi-code"
+                  [outlined]="true"
+                  size="small"
+                  class="code-btn"
+                  (click)="openProject(project.sourceUrl)"
+                  *ngIf="project.sourceUrl">
+                </p-button>
+              </div>
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Timeline with PrimeNG Timeline -->
+  <p-panel class="timeline-dashboard" [toggleable]="false">
+    <ng-template pTemplate="header">
+      <div class="timeline-header">
+        <h3 class="timeline-title">Development Timeline</h3>
+        <div class="timeline-stats">
+          <p-badge value="3" label="Projects" class="project-count-badge"></p-badge>
+        </div>
+      </div>
+    </ng-template>
+    
+    <p-timeline 
+      [value]="projects" 
+      align="alternate" 
+      styleClass="custom-timeline">
+      
+      <ng-template pTemplate="content" let-project>
+        <div class="timeline-card">
+          <h4 class="timeline-project-title">{{ project.title }}</h4>
+          <p class="timeline-project-desc">{{ project.description }}</p>
+          <div class="timeline-tech-stack">
+            <p-tag 
+              *ngFor="let tech of getTechStack(project.title)" 
+              [value]="tech" 
+              class="timeline-tech-tag">
+            </p-tag>
+          </div>
+          <div class="timeline-metrics">
+            <span class="timeline-metric">{{ project.complexity }}</span>
+            <span class="timeline-metric">{{ project.accuracy }}% accuracy</span>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="marker" let-project>
+        <div class="timeline-marker">
+          <i class="pi pi-code timeline-icon"></i>
+        </div>
+      </ng-template>
+    </p-timeline>
+  </p-panel>
+</section>

@@ -1,0 +1,14 @@
+<div class="app-container">
+  <app-header 
+    [activeSection]="currentSection" 
+    (sectionChange)="scrollToSection($event)">
+  </app-header>
+
+  <main class="main-content">
+    <app-about></app-about>
+    <app-skills></app-skills>
+    <app-projects></app-projects>
+  </main>
+
+  <app-footer></app-footer>
+</div> 

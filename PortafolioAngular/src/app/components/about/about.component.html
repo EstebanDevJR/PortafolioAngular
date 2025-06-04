@@ -1,0 +1,75 @@
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="about-content">
+      <!-- Profile Image Section -->
+      <div class="profile-image-container animate__animated animate__fadeInLeft">
+        <div class="foto">
+          <img 
+            class="img-perfil" 
+            src="assets/imagenes/foto-perfil.jpg"
+            alt="Esteban Ortiz profile photo">
+          <div class="image-glow"></div>
+        </div>
+      </div>
+      
+      <!-- Content Section -->
+      <div class="content-container animate__animated animate__fadeInRight">
+        <div class="intro-text">
+          <h3 class="intro-title">Software Developer & AI Enthusiast</h3>
+          <p class="intro-description">
+            Hi, I'm <strong>Esteban Ortiz Restrepo</strong>. I'm currently studying Software Development 
+            at Universidad Tecnológica de Pereira and exploring AI topics like LLMs, RAG, 
+            Vector Stores and tools like LangChain, Gradio and Azure.
+          </p>
+          <p class="intro-passion">
+            I love experimenting with projects that help me learn by doing, always seeking to 
+            build innovative solutions with cutting-edge technology.
+          </p>
+        </div>
+
+        <!-- Social Media and Actions -->
+        <div class="actions-container">
+          <div class="social-media">
+            <h4 class="social-title">Connect with me</h4>
+            <div class="social-icons">
+              <a 
+                class="social-link linkedin"
+                (click)="openSocialMedia('https://www.linkedin.com/in/esteban-ortiz-restrepo-157b5b2b1/')"
+                title="LinkedIn">
+                <i class="pi pi-linkedin"></i>
+              </a>
+              <a 
+                class="social-link github"
+                (click)="openSocialMedia('https://github.com/EstebanDevJR')"
+                title="GitHub">
+                <i class="pi pi-github"></i>
+              </a>
+              <a 
+                class="social-link instagram"
+                (click)="openSocialMedia('https://www.instagram.com/esteban_ortiz_0/')"
+                title="Instagram">
+                <i class="pi pi-instagram"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="action-buttons">
+            <button 
+              class="cv-button"
+              (click)="downloadCV()">
+              <i class="pi pi-download"></i>
+              Download CV
+            </button>
+            
+            <button 
+              class="assistant-button"
+              (click)="openAssistant()"
+              title="Chat with AI Assistant">
+              <i class="pi pi-comment"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
